@@ -18,8 +18,33 @@ let hasCookingPlate = false;
 let hasWaterExchange = false;
 let minAirIntakeHeight = 5; // cm
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the calculate button
+    var calculateButton = document.getElementById('calculate');
+
+    // Add click event listener
+    calculateButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+        console.log("DOING");
+        // Get values from the form
+        var power = parseFloat(document.getElementById('power').value) || 0;
+        var heatingPeriod = parseFloat(document.getElementById('heating_period').value) || 0;
+        var singleWall = document.getElementById('single_wall').checked;
+        var circumference = parseFloat(document.getElementById('circumference').value) || 0;
+        var altitude = document.getElementById('altitude').value || 0;
+
+        // Call your calculation function (you'll need a JS version of calculateAll)
+        // Example:
+        var results = calculateAll(power, heatingPeriod, circumference, singleWall, altitude);
+
+        // Display results
+        var resultsDiv = document.getElementById('results');
+        resultsDiv.textContent = 'Results: ' + JSON.stringify(results, null, 2);
+    });
+});
+
 // --- Main calculation function ---
-function calculateAll(power, heatingPeriod, combustionChamberCircumference, singleWall = true) {
+function calculateAll(power, heatingPeriod, combustionChamberCircumference, singleWall = true, altitude = 100) {
     const maxWood = calculateMaxWood(power, heatingPeriod);
     const minWood = maxWood * 0.5;
     const minimalOvenMass = maxWood * 50; // kg
@@ -37,7 +62,6 @@ function calculateAll(power, heatingPeriod, combustionChamberCircumference, sing
     const pilotBurnerArea = maxWood;
 
     const temperature = 23; // Celsius
-    const altitude = 100;   // m above sea level
 
     const tempCorrectionFactor = calculateTempCorrectionFactor(temperature);
     const altitudeCorrectionFactor = calculateAltCorrectionFactor(altitude);

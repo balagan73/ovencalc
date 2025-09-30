@@ -14,20 +14,24 @@
     <form action="">
         <div class="flex flex-col items-start gap-5 lg:gap-10">
             <div class="flex gap-5">
-                <label for="power">Power:</label>
-                <input type="text" name="power" id="power" size="4" class="border p-1" />
+                <label for="power">Power (kW):</label>
+                <input type="text" name="power" id="power" size="4" value="3" class="border p-1" />
             </div>
             <div class="flex gap-5">
-                <label for="heating_period">Heating period</label>
-                <input type="text" name="heating_period" id="heating_period" size="4" class="border p-1" />
+                <label for="heating_period">Heating period (h)</label>
+                <input type="text" name="heating_period" id="heating_period" size="4" value="12" class="border p-1" />
             </div>
             <div class="flex gap-5">
                 <label for="single_wall">Is it a single wall oven?</label>
                 <input type="checkbox" name="single_wall" id="single_wall" checked />
             </div>
             <div class="flex gap-5">
-                <label for="circumference">Circumference</label>
-                <input type="text" name="circumference" id="circumference" size="4" class="border p-1" />
+                <label for="circumference">Circumference (cm)</label>
+                <input type="text" name="circumference" id="circumference" size="4" value="142" class="border p-1" />
+            </div>
+            <div class="flex gap-5">
+                <label for="circumference">Altitude above sea level (m)</label>
+                <input type="text" name="altitude" id="altitude" size="4" value="160" class="border p-1" />
             </div>
             <button id="calculate" class="bg-blue-900 text-white gap-5 px-5 py-2 rounded-lg">Calculate</button>
         </div>
